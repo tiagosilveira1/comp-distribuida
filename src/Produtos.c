@@ -210,6 +210,11 @@ void buscar_produto_aux (Produto **produtos) {
             }
 }
 
+//Função auxiliar de 'atualizar_estoque'
+void alterar_quantidade(int *quantidade, int nova_qtd) {
+    *quantidade = nova_qtd;
+}
+
 //----------------------------------
 //4. ATUALIZAR ESTOQUE
 //----------------------------------
@@ -235,7 +240,7 @@ void atualizar_estoque(Produto **produtos) {
     scanf("%d", &nova_qtd);
     printf("\n");
 
-    busca->quantidade = nova_qtd;
+    alterar_quantidade(&busca->quantidade, nova_qtd);
 
     printf("Estoque atualizado com sucesso!\n");
 }
@@ -314,7 +319,7 @@ int main (void) {
     //variáveis utilizadas na main do programa
     int choose;
     Produto *produtos = NULL;
-    
+
     while(true) {
         printf("========================================\n");
         printf("    SISTEMA DE CADASTRO DE PRODUTOS\n");
