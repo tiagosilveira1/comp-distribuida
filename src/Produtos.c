@@ -128,13 +128,12 @@ void adicionar_produto(Produto **produtos) {
 
     free(nome); //nome já foi copiado e com memória nova alocada para o produto, portanto deve ser liberado
     
+    //impressão
+    printf("Produto adicionado com codigo %d!\n", (*produtos)[quantidade_produtos].codigo);
 
+    //incrementar
     codigo++;
     quantidade_produtos++;
-    //---------
-
-    //impressão
-    printf("Produto adicionado com codigo %d!\n", produto->codigo);
 }
 
 //----------------------------------
@@ -165,7 +164,7 @@ void listar_produtos(Produto **produtos) {
            (*produtos)[i].preco * (*produtos)[i].quantidade);
         preco_total += (*produtos)[i].preco * (*produtos)[i].quantidade;
     }
-    printf("Valor total do estoque: %.2f",preco_total);
+    printf("Valor total do estoque: %.2f\n",preco_total);
 }
 
 //----------------------------------
@@ -175,7 +174,6 @@ void listar_produtos(Produto **produtos) {
 //Lógica similar à função de listagem: percorre o vetor dinâmico de produtos tentando encontrar o item com o código informado.
 
 Produto* buscar_produto(Produto **produtos) {
-    printf("--- Buscar Produto ---\n");
 
     int codigo;
     printf("Codigo do produto: ");
@@ -193,6 +191,8 @@ Produto* buscar_produto(Produto **produtos) {
 //Função utilizada para simplificar a main.
 
 void buscar_produto_aux (Produto **produtos) {
+
+    printf("--- Buscar Produto ---\n");
 
     Produto* busca = buscar_produto(produtos);
 
@@ -301,7 +301,7 @@ void remover_produto(Produto **produtos) {
 //Função utilizada para simplificar a main.
 
 void liberar_memoria(Produto **produtos) {
-    printf("Liberando memória...\n");
+    printf("Liberando memoria...\n");
 
     for (int i = 0; i < quantidade_produtos; i++) {
         printf("Memoria do produto '%s' liberada.\n", (*produtos)[i].nome);
